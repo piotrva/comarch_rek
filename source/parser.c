@@ -49,7 +49,7 @@ void ATCommandProcess(void){
     if(storeChar()){
         ATCommand* command = getByName(buffer);
         if(command != NULL){
-            command->function(&buffer[strlen(command->name)+1]);
+            command->function(&buffer[strlen(command->name)]);
         }
         memset(buffer, 0, sizeof(buffer)/sizeof(buffer[0]));
     }
@@ -68,7 +68,7 @@ bool storeChar(void){
         printf("%c", c);  // this provides echo
         if(c == '\n' || c == '\r'){
             pos = 0;
-            printf("\n\n");
+            printf("\n");
             return true;
         }else{
             buffer[pos] = c;
